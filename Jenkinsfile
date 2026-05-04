@@ -29,8 +29,9 @@ pipeline {
                 docker stop blue || true
                 docker rm blue || true
 
-                docker stop green
-                docker rename green blue
+                docker stop green || true
+                docker rm green || true
+                
                 docker run -d -p 8081:80 --name blue $IMAGE
                 '''
             }
